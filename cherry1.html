@@ -1,0 +1,120 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cute Quote</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #ffc0cb; /* Pink background */
+            color: #fff; /* White text */
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+        }
+        .container {
+            background-color: #ff85b3; /* Lighter pink for the box */
+            border: 2px solid #ffb6c1;
+            border-radius: 15px;
+            padding: 30px;
+            display: inline-block;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        h1, p {
+            color: #fff;
+        }
+        .button {
+            background-color: #d291e4; /* Light purple */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background-color: #b08ac6; /* Darker purple on hover */
+        }
+        .quote {
+            display: none;
+            margin-top: 20px;
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .quote.show {
+            display: block;
+            opacity: 1;
+            transform: scale(1);
+        }
+        .decorations {
+            font-size: 16px;
+            color: #fff;
+            margin: 20px 0;
+        }
+        .decorations::before,
+        .decorations::after {
+            content: '⋆ ˚｡⋆୨୧˚　˚୨୧⋆｡˚ ⋆';
+            display: block;
+            font-size: 18px;
+            margin: 20px 0;
+        }
+        .notification {
+            display: none;
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #d291e4; /* Light purple */
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 18px;
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .notification.show {
+            display: block;
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="decorations"></div>
+        <h1 id="welcomeText">Welcome! 🌟</h1>
+        <p id="instructionText">Click the button below to receive a cute letter!</p>
+        <button class="button" id="showQuoteButton" onclick="showQuote()">Show Quote</button>
+        <div class="quote" id="quote">
+            <h1>✨ Words From The Heart ✨</h1>
+            <p>You matter, you're valued, and you're enough. Just as you are, in this moment, you're perfect.</p>
+            <button class="button" onclick="showNotification()">Next</button>
+        </div>
+        <div class="decorations"></div>
+    </div>
+    <div class="decorations"></div>
+    <div id="notification" class="notification">🌟 This page says you are loved!🌟</div>
+
+    <script>
+        function showQuote() {
+            document.getElementById('welcomeText').style.display = 'none';
+            document.getElementById('instructionText').style.display = 'none';
+            document.getElementById('showQuoteButton').style.display = 'none'; // Hide "Show Quote" button
+            document.getElementById('quote').classList.add('show');
+        }
+
+        function showNotification() {
+            const notification = document.getElementById('notification');
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000); // Notification will disappear after 3 seconds
+        }
+    </script>
+</body>
+</html>
